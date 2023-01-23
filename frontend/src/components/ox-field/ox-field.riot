@@ -11,7 +11,16 @@
       },
       sendSetField() {
         try {
-            this.hub.invoke("SetField", this.props.fieldId);
+            if(this.appState.exampleText.state.value == 'o'){
+                this.hub.invoke("SetFieldO", this.props.fieldId);
+                var message = 'x'
+            } else {
+                this.hub.invoke("SetFieldX", this.props.fieldId);
+                var message = 'o'
+            }
+            this.appState.exampleText.update({ 
+                value: message 
+            });
         } catch (err) {
             console.error(err);
         }

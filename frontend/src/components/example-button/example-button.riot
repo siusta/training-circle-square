@@ -1,14 +1,17 @@
 <example-button>
-    <button class="button button-outline" onclick="{ () => yourFunction() }">example-button</button>
+    <button class="button button-outline" onclick="{ () => changePlayer() }">Change player</button>
     <script>
     export default {
-        yourFunction() {
-            var message = "You clicked example-button!"
-            console.log(message)
-            console.log(this.appState)
+        changePlayer() {
+            if(this.appState.exampleText.state.value == 'o'){
+                var message = 'x'
+            } else {
+                var message = 'o'
+            }
             this.appState.exampleText.update({ 
                 value: message 
             })
+            console.log("ayy");
         }
     }
   </script>

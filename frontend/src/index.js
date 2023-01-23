@@ -5,10 +5,12 @@ import GameBoard from './components/game-board/game-board.riot'
 import OxField from './components/ox-field/ox-field.riot'
 import ExampleButton from './components/example-button/example-button.riot'
 import ExampleText from './components/example-text/example-text.riot'
+import ResetButton from './components/reset-button/reset-button.riot'
 
 var appState = {
     oxFields: {}
 };
+
 
 // SignalR
 var hub = new Hub("http://localhost:5000/xohub");
@@ -18,6 +20,7 @@ var hub = new Hub("http://localhost:5000/xohub");
 
 hub.connection.on("CurrentFieldValue", (fieldId, value) => {
     appState.oxFields[fieldId].update({value})
+    console.log("hub"+value)
 })
 
 // SignalR calls from backend go here
@@ -36,6 +39,7 @@ register('ox-field', OxField)
 register('game-board', GameBoard)
 register('example-button', ExampleButton)
 register('example-text', ExampleText)
+register('reset-button', ResetButton)
 
 // RiotJs component registration happens here here
 // -----------------------------------------------
